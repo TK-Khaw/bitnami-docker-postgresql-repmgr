@@ -495,7 +495,7 @@ pg_ctl_options='-o "--config-file=\"${POSTGRESQL_CONF_FILE}\" --external_pid_fil
 pg_basebackup_options='$waldir_option'
 EOF
 
-	if [[ -v REPMGR_FENCE_OLD_PRIMARY ]]; then
+	if [[ "$REPMGR_FENCE_OLD_PRIMARY" == "true" ]]; then
 		cat <<EOF >>"${REPMGR_CONF_FILE}.tmp" 
 child_nodes_disconnect_command='/bin/bash -c ". /opt/bitnami/scripts/libpostgresql.sh && . /opt/bitnami/scripts/postgresql-env.sh && postgresql_stop && kill -TERM 1"'
 EOF
